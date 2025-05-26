@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<center><h1>Welcome</h1></center>
+{% if blogs %}
+{% for blog in blogs  %}
+<h2>{{ blog.title }}</h2>
+<center>
+    <img src="{{ blog.image.url }}" width="300" height="300">
+</center>
+<p>{{ blog.body }}</p>
+<p>Author: {{ blog.author }} | date: {{ blog.date_added }}</p>
+{% if request.user == blog.author %}
+<p><a href="{% url 'delete' blog.id %}">Delete</a> <a href="{% url 'edit' blog.id %}">Edit</a></p>
+{% endif %}
+{% endfor %}
+{% else %}
+<center><h2>Blog mavjud emas. Birinchisini siz <a href="{% url 'add' %}">yarating</a>!!!</h2></center>
+{% endif %}
+{% endblock content %}

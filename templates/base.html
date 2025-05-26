@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>www.myblog.com</title>
+</head>
+<body>
+
+<nav>
+    {% if user.is_authenticated %}
+    <ul>
+        <li><h3><a href="{% url 'index' %}">Bloglar</a></h3></li>
+        <li><h3><a href="{% url 'myblogs' %}">Mening bloglarim</a></h3></li>
+        <li><h3><a href="{% url 'add' %}">Blog yasash</a></h3></li>
+        <li><h3><a href="{% url 'logout' %}">Logout</a></h3></li>
+    </ul>
+    {% else %}
+    <ul>
+        <li><h3><a href="{% url 'index' %}">Bloglar</a></h3></li>
+        <li><h3><a href="{% url 'login' %}">Login</a></h3></li>
+
+    </ul>
+    {% endif %}
+</nav>
+
+{% block content %}
+{% endblock content %}
+<center><p>MyBlog copyright. All rights reserved.</p></center>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>My Blogs</h1>
+{% if blogs %}
+  {% for blog in blogs  %}
+<h2>{{ blog.title }}</h2>
+<center>
+    <img src="{{ blog.image.url }}" width="300" height="300">
+</center>
+<p>{{ blog.body }}</p>
+<p>Date: {{ blog.date_added }}</p>
+
+<p><a href="{% url 'delete' blog.id %}">Delete</a> <a href="{% url 'edit' blog.id %}">Edit</a></p>
+
+{% endfor %}
+{% else %}
+<h3>Sizning blogingiz mavjud emas!</h3>
+{% endif %}
+{% endblock %}
